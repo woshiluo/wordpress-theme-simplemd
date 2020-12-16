@@ -88,7 +88,7 @@ if ( ! function_exists( 'simplemd_entry_footer' ) ) :
 			false,
 			false,
 			false,
-			"mdui-btn mdui-btn-dense mdui-ripple"
+			"mdui-btn mdui-btn-dense mdui-ripple cat-href"
 		);
 		
 		if( NULL !== get_edit_post_link() ) {

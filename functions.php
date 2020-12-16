@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define( '_S_VERSION', '1.0.1' );
 }
 
 if ( ! function_exists( 'simplemd_setup' ) ) :
@@ -161,7 +161,6 @@ function simplemd_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'simplemd_scripts' );
 
-
 function format_comment($comment, $args, $depth) { ?>
         <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
             <div class="comment-intro">
@@ -185,6 +184,44 @@ function format_comment($comment, $args, $depth) { ?>
             </div>
 		</li>
 <?php } 
+
+function simplemd_comment_form_fileds( $fileds ) {
+	$commenter     = wp_get_current_commenter();
+	$fileds['email'] = '
+		<div class="mdui-textfield mdui-textfield-floating-label">
+			<i class="mdui-icon material-icons">email</i>
+			<label class="mdui-textfield-label">Email*</label>
+			<input required id="email" name="email" type="email" class="mdui-textfield-input"
+					value="' . esc_attr( $commenter['comment_author_email'] ) . '"/>
+			<div class="mdui-textfield-error">Please input email address.</div>
+		</div>';
+	$fileds['author'] = '
+		<div class="mdui-textfield mdui-textfield-floating-label">
+			<i class="mdui-icon material-icons">account_circle</i>
+			<label class="mdui-textfield-label">Name*</label>
+			<input required id="author" name="author" type="author" class="mdui-textfield-input"
+					value="' . esc_attr( $commenter['comment_author'] ) . '"/>
+			<div class="mdui-textfield-error">Please input name.</div>
+		</div>';
+	$fileds['url'] = '
+		<div class="mdui-textfield mdui-textfield-floating-label">
+			<i class="mdui-icon material-icons">links</i>
+			<label class="mdui-textfield-label">Website</label>
+			<input id="url" name="url" type="url" class="mdui-textfield-input"
+					value="' . esc_attr( $commenter['comment_author_url'] ) . '"/>
+		</div>';
+	$fileds['cookies'] = '
+		<div id="cookies-checker" class="mdui-container">
+			<label class="mdui-switch">
+				<input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox"/>
+				<i class="mdui-switch-icon"></i>
+				<span>Save my name, email, and website in this browser for the next time I comment.</span>
+			</label>
+		</div>';
+	return $fileds;
+}
+
+add_filter('comment_form_default_fields','simplemd_comment_form_fileds');
 
 /**
  * Implement the Custom Header feature.

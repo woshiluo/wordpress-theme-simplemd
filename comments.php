@@ -74,7 +74,15 @@ if ( post_password_required() ) {
 	
 		endif; // Check for have_comments().
 	
-		comment_form();
+			comment_form( array( 
+				"comment_field" => '
+					<div class="mdui-textfield mdui-textfield-floating-label">
+						<i class="mdui-icon material-icons">message</i>
+						<label class="mdui-textfield-label">Comment</label>
+						<textarea id="url" name="url" type="url" class="mdui-textfield-input"></textarea>
+					</div>',
+				"submit_button" => '<input name="%1$s" type="submit" id="%2$s" class="%3$s mdui-btn mdui-btn-block mdui-ripple" value="%4$s" />'
+			 ) );
 		?>
 	
 	</div><!-- #comments -->
