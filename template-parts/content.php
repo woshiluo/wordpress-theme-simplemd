@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package besimple
+ * @package simplemd
  */
 
 ?>
@@ -24,14 +24,14 @@
 					?>
 					<div class="entry-meta">
 						<?php
-						besimple_posted_on();
-						besimple_posted_by();
+						simplemd_posted_on();
+						simplemd_posted_by();
 						?>
 					</div><!-- .entry-meta -->
 				<?php endif; ?>
 			</header><!-- .entry-header -->
 		
-			<?php besimple_post_thumbnail(); ?>
+			<?php simplemd_post_thumbnail(); ?>
 		
 			<div class="entry-content mdui-typo">
 				<?php
@@ -39,7 +39,7 @@
 					sprintf(
 						wp_kses(
 							/* translators: %s: Name of current post. Only visible to screen readers */
-							__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'besimple' ),
+							__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'simplemd' ),
 							array(
 								'span' => array(
 									'class' => array(),
@@ -52,7 +52,7 @@
 		
 				wp_link_pages(
 					array(
-						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'besimple' ),
+						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'simplemd' ),
 						'after'  => '</div>',
 					)
 				);
@@ -60,7 +60,7 @@
 			</div><!-- .entry-content -->
 		
 			<footer class="entry-footer">
-				<?php besimple_entry_footer(); ?>
+				<?php simplemd_entry_footer(); ?>
 			</footer><!-- .entry-footer -->
 		</article><!-- #post-<?php the_ID(); ?> -->
 	</div>

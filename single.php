@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package besimple
+ * @package simplemd
  */
 
 get_header();
@@ -24,8 +24,8 @@ get_header();
 		
 					the_post_navigation(
 						array(
-							'prev_text' => '<span class="mdui-btn nav-subtitle"><i class="mdui-icon material-icons">keyboard_arrow_left</i>' . esc_html__( 'Previous:', 'besimple' ) . '%title</span>',
-							'next_text' => '<span class="mdui-btn nav-subtitle">' . esc_html__( 'Next:', 'besimple' ) . '%title<i class="mdui-icon material-icons">keyboard_arrow_right</i></span>',
+							'prev_text' => '<span class="mdui-btn nav-subtitle"><i class="mdui-icon material-icons">keyboard_arrow_left</i>' . esc_html__( 'Previous:', 'simplemd' ) . '%title</span>',
+							'next_text' => '<span class="mdui-btn nav-subtitle">' . esc_html__( 'Next:', 'simplemd' ) . '%title<i class="mdui-icon material-icons">keyboard_arrow_right</i></span>',
 						)
 					);
 

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package besimple
+ * @package simplemd
  */
 
 ?>
@@ -18,21 +18,21 @@
 				<?php if ( 'post' === get_post_type() ) : ?>
 				<div class="entry-meta">
 					<?php
-					besimple_posted_on();
-					besimple_posted_by();
+					simplemd_posted_on();
+					simplemd_posted_by();
 					?>
 				</div><!-- .entry-meta -->
 				<?php endif; ?>
 			</header><!-- .entry-header -->
 		
-			<?php besimple_post_thumbnail(); ?>
+			<?php simplemd_post_thumbnail(); ?>
 		
 			<div class="entry-summary">
 				<?php the_excerpt(); ?>
 			</div><!-- .entry-summary -->
 		
 			<footer class="entry-footer">
-				<?php besimple_entry_footer(); ?>
+				<?php simplemd_entry_footer(); ?>
 			</footer><!-- .entry-footer -->
 		</article><!-- #post-<?php the_ID(); ?> -->
 	</div>

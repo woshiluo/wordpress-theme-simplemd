@@ -4,14 +4,14 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package besimple
+ * @package simplemd
  */
 
-if ( ! function_exists( 'besimple_posted_on' ) ) :
+if ( ! function_exists( 'simplemd_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
-	function besimple_posted_on() {
+	function simplemd_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -32,14 +32,14 @@ if ( ! function_exists( 'besimple_posted_on' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'besimple_posted_by' ) ) :
+if ( ! function_exists( 'simplemd_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 */
-	function besimple_posted_by() {
+	function simplemd_posted_by() {
 		$byline = sprintf(
 			/* translators: %s: post author. */
-			esc_html_x( 'by %s', 'post author', 'besimple' ),
+			esc_html_x( 'by %s', 'post author', 'simplemd' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
@@ -48,11 +48,11 @@ if ( ! function_exists( 'besimple_posted_by' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'besimple_entry_footer' ) ) :
+if ( ! function_exists( 'simplemd_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function besimple_entry_footer() {
+	function simplemd_entry_footer() {
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			echo '<div class="content-categories-list">';
@@ -99,14 +99,14 @@ if ( ! function_exists( 'besimple_entry_footer' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'besimple_post_thumbnail' ) ) :
+if ( ! function_exists( 'simplemd_post_thumbnail' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function besimple_post_thumbnail() {
+	function simplemd_post_thumbnail() {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}

@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package besimple
+ * @package simplemd
  */
 
 /*
@@ -29,18 +29,18 @@ if ( post_password_required() ) {
 			?>
 			<h2 class="comments-title">
 				<?php
-				$besimple_comment_count = get_comments_number();
-				if ( '1' === $besimple_comment_count ) {
+				$simplemd_comment_count = get_comments_number();
+				if ( '1' === $simplemd_comment_count ) {
 					printf(
 						/* translators: 1: title. */
-						esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'besimple' ),
+						esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'simplemd' ),
 						'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 					);
 				} else {
 					printf( 
 						/* translators: 1: comment count number, 2: title. */
-						esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $besimple_comment_count, 'comments title', 'besimple' ) ),
-						number_format_i18n( $besimple_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $simplemd_comment_count, 'comments title', 'simplemd' ) ),
+						number_format_i18n( $simplemd_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 					);
 				}
@@ -68,7 +68,7 @@ if ( post_password_required() ) {
 			// If comments are closed and there are comments, let's leave a little note, shall we?
 			if ( ! comments_open() ) :
 				?>
-				<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'besimple' ); ?></p>
+				<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'simplemd' ); ?></p>
 				<?php
 			endif;
 	

@@ -1,10 +1,10 @@
 <?php
 /**
- * besimple functions and definitions
+ * simplemd functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package besimple
+ * @package simplemd
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
-if ( ! function_exists( 'besimple_setup' ) ) :
+if ( ! function_exists( 'simplemd_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -20,14 +20,14 @@ if ( ! function_exists( 'besimple_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function besimple_setup() {
+	function simplemd_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on besimple, use a find and replace
-		 * to change 'besimple' to the name of your theme in all the template files.
+		 * If you're building a theme based on simplemd, use a find and replace
+		 * to change 'simplemd' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'besimple', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'simplemd', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -68,7 +68,7 @@ if ( ! function_exists( 'besimple_setup' ) ) :
 		add_theme_support(
 			'custom-background',
 			apply_filters(
-				'besimple_custom_background_args',
+				'simplemd_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -95,7 +95,7 @@ if ( ! function_exists( 'besimple_setup' ) ) :
 		);
 	}
 endif;
-add_action( 'after_setup_theme', 'besimple_setup' );
+add_action( 'after_setup_theme', 'simplemd_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -104,22 +104,22 @@ add_action( 'after_setup_theme', 'besimple_setup' );
  *
  * @global int $content_width
  */
-function besimple_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'besimple_content_width', 640 );
+function simplemd_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'simplemd_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'besimple_content_width', 0 );
+add_action( 'after_setup_theme', 'simplemd_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function besimple_widgets_init() {
+function simplemd_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'besimple' ),
+			'name'          => esc_html__( 'Sidebar', 'simplemd' ),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'besimple' ),
+			'description'   => esc_html__( 'Add widgets here.', 'simplemd' ),
 			'before_widget' => '<div id="%1$s" class="mdui-panel-item mdui-panel-item-open widget %2$s">',
 			'after_widget'  => '</div></div>',
 			'before_title'  => '<div class="mdui-panel-item-header widget-title">',
@@ -128,23 +128,23 @@ function besimple_widgets_init() {
 	);
 }
 
-add_action( 'widgets_init', 'besimple_widgets_init' );
+add_action( 'widgets_init', 'simplemd_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function besimple_scripts() {
-	wp_enqueue_style( 'besimple-style', get_stylesheet_uri(), array(), _S_VERSION );
+function simplemd_scripts() {
+	wp_enqueue_style( 'simplemd-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_enqueue_style( 'mdui', get_template_directory_uri() . '/libs/mdui-v1.0.0/css/mdui.min.css', array(), _S_VERSION, false );
 	wp_enqueue_style( 'prism', "https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css" );
 	wp_enqueue_style( 'prism-line', "https://cdn.jsdelivr.net/npm/prismjs@1.17.1/plugins/line-numbers/prism-line-numbers.min.css" );
 	wp_enqueue_style( 'lightgallery', "https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css" );
 
 
-	// wp_style_add_data( 'besimple-style', 'rtl', 'replace' );
+	// wp_style_add_data( 'simplemd-style', 'rtl', 'replace' );
 	wp_enqueue_script("jquery");
 
-	wp_enqueue_script( 'besimple-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'simplemd-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'mathjax', get_template_directory_uri() . '/js/mathjax.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'mdui', get_template_directory_uri() . '/libs/mdui-v1.0.0/js/mdui.min.js', array(), _S_VERSION, false );
 	wp_enqueue_script( 'latex',  "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js", array( 'mathjax' ) );
@@ -159,7 +159,7 @@ function besimple_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'besimple_scripts' );
+add_action( 'wp_enqueue_scripts', 'simplemd_scripts' );
 
 
 function format_comment($comment, $args, $depth) { ?>

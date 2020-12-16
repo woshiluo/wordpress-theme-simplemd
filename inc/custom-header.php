@@ -8,39 +8,39 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package besimple
+ * @package simplemd
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses besimple_header_style()
+ * @uses simplemd_header_style()
  */
-function besimple_custom_header_setup() {
+function simplemd_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		apply_filters(
-			'besimple_custom_header_args',
+			'simplemd_custom_header_args',
 			array(
 				'default-image'      => '',
 				'default-text-color' => '000000',
 				'width'              => 1000,
 				'height'             => 250,
 				'flex-height'        => true,
-				'wp-head-callback'   => 'besimple_header_style',
+				'wp-head-callback'   => 'simplemd_header_style',
 			)
 		)
 	);
 }
-add_action( 'after_setup_theme', 'besimple_custom_header_setup' );
+add_action( 'after_setup_theme', 'simplemd_custom_header_setup' );
 
-if ( ! function_exists( 'besimple_header_style' ) ) :
+if ( ! function_exists( 'simplemd_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see besimple_custom_header_setup().
+	 * @see simplemd_custom_header_setup().
 	 */
-	function besimple_header_style() {
+	function simplemd_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*
