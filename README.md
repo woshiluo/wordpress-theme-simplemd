@@ -1,6 +1,6 @@
 # SimpleMD
 
-> A simple Material Design User Interface.
+> A simple wordpress theme.
 
 This theme is still in **Dev.**
 
