@@ -913,7 +913,7 @@ a:active {
 /***
  * Comment 
  */
-.comment {
+.comment-list > .comment {
 	margin: 5px;
 	padding: 10px;
 	border: solid gray 1px;
@@ -974,6 +974,15 @@ a:active {
 	max-width: 100%;
 }
 
+.navigation.posts-navigation {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.navigation.posts-navigation > * {
+	margin: 5px;
+}
 
 /***
  * Header 

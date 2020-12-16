@@ -223,6 +223,36 @@ function simplemd_comment_form_fileds( $fileds ) {
 
 add_filter('comment_form_default_fields','simplemd_comment_form_fileds');
 
+
+function simplemd_pagenavi() {  
+	global $wp_query,$wp_rewrite;  
+	$wp_query->query_vars['paged'] > 1 ?$current=$wp_query->query_vars['paged'] :$current= 1;  
+	$pagination=array(  
+		'base'=> @add_query_arg('paged','%#%'),  
+		'format'=>'',  
+		'total'=>$wp_query->max_num_pages,  
+		'current'=>$current,  
+		'show_all'=> false,  
+		'type'=>'plain',  
+		'end_size'=>'2',
+		'mid_size'=>'1',
+		'prev_text'=>'<i class="mdui-icon material-icons">chevron_left</i>',  
+		'next_text'=>'<i class="mdui-icon material-icons">chevron_right</i>'  
+	);  
+	if( $wp_rewrite -> using_permalinks() )  
+		$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg('s',get_pagenum_link(1) ) ) .'page/%#%/','paged');  
+	if( !empty($wp_query->query_vars['s']) )  
+		$pagination['add_args'] =array('s'=>get_query_var('s'));  
+	$output = '<div class="navigation posts-navigation mdui-btn-group">' . paginate_links($pagination) . '</div>';
+	$output = str_replace( '<span class="page-numbers dots">', '<span class="page-numbers dots mdui-btn mdui-btn-dense mdui-ripple" disabled>', $output );
+	$output = str_replace( 'aria-current="page"', 'aria-current="page" disabled', $output );
+	$output = str_replace( '"next page-numbers"', '"page-numbers next mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple"', $output );
+	$output = str_replace( '"prev page-numbers"', '"page-numbers prev mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple"', $output );
+	$output = str_replace( '"page-numbers current"', '"page-numbers current mdui-btn mdui-btn-dense mdui-ripple"', $output );
+	$output = str_replace( '"page-numbers"', '"page-numbers mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple"', $output );
+	echo $output;
+}  
+
 /**
  * Implement the Custom Header feature.
  */
