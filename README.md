@@ -4,4 +4,6 @@
 
 This theme is still in **Dev.**
 
-This theme is based on <https://underscores.me/>.
+这个主题基于 <https://underscores.me/> 修改而来.
+
+这个主题使用了 <https://github.com/zdhxiong/mdui>
