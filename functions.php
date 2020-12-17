@@ -143,17 +143,20 @@ function simplemd_scripts() {
 
 	// wp_style_add_data( 'simplemd-style', 'rtl', 'replace' );
 	wp_enqueue_script("jquery");
-
-	wp_enqueue_script( 'simplemd-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'mathjax', get_template_directory_uri() . '/js/mathjax.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'mdui', get_template_directory_uri() . '/libs/mdui-v1.0.0/js/mdui.min.js', array(), _S_VERSION, false );
-	wp_enqueue_script( 'latex',  "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js", array( 'mathjax' ) );
-	wp_enqueue_script( 'prism-core',  "https://cdn.jsdelivr.net/npm/prismjs/components/prism-core.min.js" );
+
+	wp_enqueue_script( 'mathjax-config', get_template_directory_uri() . '/js/mathjax.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'highlight-config', get_template_directory_uri() . '/js/highlight.js', array( 'jquery' ), _S_VERSION, true );
+	wp_enqueue_script( 'customizer', get_template_directory_uri() . '/js/customizer.js', array( 'jquery' ), _S_VERSION, true );
+
+	wp_enqueue_script( 'mathjax',  "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js", array( 'mathjax-config' ) );
 	wp_enqueue_script( 'prism',  "https://cdn.jsdelivr.net/npm/prismjs/prism.min.js" );
+	wp_enqueue_script( 'prism-core',  "https://cdn.jsdelivr.net/npm/prismjs/components/prism-core.min.js" );
 	wp_enqueue_script( 'prism-line',  "https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js" );
 	wp_enqueue_script( 'prism-autoloader',  "https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js" );
 	wp_enqueue_script( 'lightgallery',  "https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/js/lightgallery-all.min.js" );
 	wp_enqueue_script( 'nicescrool',  "https://cdn.jsdelivr.net/npm/jquery.nicescroll@3.7.6/jquery.nicescroll.min.js" );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

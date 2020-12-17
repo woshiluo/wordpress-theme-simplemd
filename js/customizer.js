@@ -7,36 +7,32 @@
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
 
-( function( $ ) {
-	// Site title and description.
-	wp.customize( 'blogname', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-title a' ).text( to );
-		} );
-	} );
-	wp.customize( 'blogdescription', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-description' ).text( to );
-		} );
-	} );
+var lg_ar = Array(), images = Array(), subtit = Array();
+jQuery(document).ready( function(){
+// Light Gallery
+	jQuery(".entry-content img").each( function() {
+		jQuery(this).css('cursor', 'pointer');
+		var element = jQuery(this).siblings("figcaption");
+        var img_alt = jQuery(element).text();
+		lg_ar[ lg_ar.length ] = { "src": this.src, "thumb": this.src, "subHtml": img_alt + "<br/>By Woshiluo"}
+	});
 
-	// Header text color.
-	wp.customize( 'header_textcolor', function( value ) {
-		value.bind( function( to ) {
-			if ( 'blank' === to ) {
-				$( '.site-title, .site-description' ).css( {
-					clip: 'rect(1px, 1px, 1px, 1px)',
-					position: 'absolute',
-				} );
-			} else {
-				$( '.site-title, .site-description' ).css( {
-					clip: 'auto',
-					position: 'relative',
-				} );
-				$( '.site-title a, .site-description' ).css( {
-					color: to,
-				} );
-			}
-		} );
-	} );
-}( jQuery ) );
+	images = jQuery(".entry-content img");
+	for( var i = 0; i < images.length; i ++ ) {
+		images[i].now = i;
+		jQuery(images[i]).click( function() {
+			var tmp = this.now;
+			console.log( tmp );
+			jQuery("body").lightGallery({
+				autoplay: false,
+				autoplayControls: false,
+				share: false,
+				counter: true,
+				dynamic: true,
+				download: false,
+				dynamicEl: lg_ar
+			});
+			jQuery("body").data('lightGallery').index = tmp;
+		});
+	}
+});
