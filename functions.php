@@ -162,7 +162,7 @@ function simplemd_scripts() {
 add_action( 'wp_enqueue_scripts', 'simplemd_scripts' );
 
 function format_comment($comment, $args, $depth) { ?>
-        <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+        <li <?php comment_class( 'comment-li' ); ?> id="li-comment-<?php comment_ID() ?>">
             <div class="comment-intro">
 				<?php echo get_avatar( get_comment_author_email(), 48 ); ?>
 				<div class="comment-intro-details">
