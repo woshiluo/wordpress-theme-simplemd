@@ -607,7 +607,6 @@ a:active {
 }
 
 @media screen and (min-width: 37.5em) {
-
 	.menu-toggle {
 		display: none;
 	}
@@ -893,12 +892,15 @@ a:active {
 .site-main {
 	width: 100%;
 }
+.widget-area {
+	min-width: 90%;
+}
 @media screen and (min-width: 1270px) {
 	.site-main {
 		width: 70%;
 	}
-
 	.widget-area {
+		min-width: auto;
 		max-width: 30%;
 	}
 }
@@ -1073,4 +1075,12 @@ a:active {
 .widget > .mdui-panel-item-body > ul {
 	list-style: none;
 	padding-left: 0.2em;
+}
+
+/***
+ * Hitokoto 
+ */
+
+.hitokoto {
+	display: none;
 }

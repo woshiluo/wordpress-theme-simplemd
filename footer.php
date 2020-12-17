@@ -30,13 +30,6 @@
 
 <?php wp_footer(); ?>
 
-<script>
-MathJax = {
-  tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
-  svg: {fontCache: 'global'}
-};
-</script>
-
 <script>Prism.plugins.autoloader.languages_path = 'https://cdn.jsdelivr.net/npm/prismjs/components/'</script>
 <script>
 // Add Highlight
@@ -45,18 +38,6 @@ jQuery("pre:not([class*='language'])").addClass('language-cpp').addClass('line-n
 jQuery("[class*='language']").addClass('line-numbers');
 jQuery("pre[class*='language']").addClass('remove-code-backgroud');
 jQuery("[class*='language']").removeClass('wp-block-code');
-// Add Hitokoto
-jQuery("#site-header").after("<div class=\"hitokoto-card\"><div class=\"hitokoto\"><div class='hitokoto-content'></div><br/><div class='hitokoto-from'><\/div><\/div><\/div>");
-			// Hitokoto
-	jQuery.get('https://hitokoto.woshiluo.com/', function (data) {
-		if (typeof data === 'string') data = JSON.parse(data);
-		jQuery('.hitokoto').css('display', 'block');
-		jQuery('.hitokoto-content').css('display', '').text(data.hitokoto);
-		if (data.source) {
-			jQuery('.hitokoto-from').css('display', '').text('—— ' + data.source);
-		}
-	});
-
 </script>
 
 

@@ -162,7 +162,7 @@ function simplemd_scripts() {
 add_action( 'wp_enqueue_scripts', 'simplemd_scripts' );
 
 function format_comment($comment, $args, $depth) { ?>
-        <li <?php comment_class( 'comment-li' ); ?> id="li-comment-<?php comment_ID() ?>">
+        <li <?php comment_class( 'comment-li' ); ?> id="comment-<?php comment_ID() ?>">
             <div class="comment-intro">
 				<?php echo get_avatar( get_comment_author_email(), 48 ); ?>
 				<div class="comment-intro-details">
@@ -252,6 +252,79 @@ function simplemd_pagenavi() {
 	$output = str_replace( '"page-numbers"', '"page-numbers mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple"', $output );
 	echo $output;
 }  
+
+// Creating the widget 
+class hitokoto_widget extends WP_Widget {
+	function __construct() {
+		parent::__construct(
+			'hitokoto_widget', 
+			__('Hitokoto Widget', 'hitokoto_widget_domain'), 
+			array( 'description' => __( 'Hitokoto', 'hitokoto_widget_domain' ), ) 
+		);
+	}
+
+	public function widget( $args, $instance ) {
+		$title = apply_filters( 'widget_title', $instance['title'] );
+
+		echo $args['before_widget'];
+		if ( ! empty( $title ) )
+			echo $args['before_title'] . $title . $args['after_title'];
+
+		$hitokoto_id = "hitokoto-" . mt_rand();
+?>
+	<div id="<?php printf( "%s", $hitokoto_id ); ?>" class="hitokoto-card">
+		<div class="mdui-spinner mdui-center hitokoto-loading"></div>
+		<blockquote class="hitokoto">
+			<p class="hitokoto-content"></p>
+			<footer class="hitokoto-from"></footer>
+		</blockquote>
+	</div>
+	<script> 
+		jQuery.get('https://hitokoto.woshiluo.com/', function (data) {
+			if (typeof data === 'string') data = JSON.parse(data);
+			let selector = jQuery( "#<?php printf( "%s", $hitokoto_id ); ?>" );
+			selector.find('.hitokoto-loading').css('display', 'none');
+			selector = selector.find('.hitokoto');
+			selector.css('display', 'block');
+			selector.find('.hitokoto-content').css('display', '').text(data.hitokoto);
+			if (data.source) {
+				selector.find('.hitokoto-from').css('display', '').text( '「' + data.source + '」' );
+			}
+		});
+	</script>
+<?php
+
+		echo $args['after_widget'];
+	}
+
+	public function form( $instance ) {
+		if ( isset( $instance[ 'title' ] ) ) {
+			$title = $instance[ 'title' ];
+		}
+		else {
+			$title = __( 'Hitokoto', 'hitokoto_widget_domain' );
+		}
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		</p>
+		<?php 
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		return $instance;
+	}
+} 
+
+
+// Register and load the widget
+function hitokoto_load_widget() {
+	register_widget( 'hitokoto_widget' );
+}
+add_action( 'widgets_init', 'hitokoto_load_widget' );
 
 /**
  * Implement the Custom Header feature.
