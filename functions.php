@@ -326,6 +326,8 @@ function hitokoto_load_widget() {
 }
 add_action( 'widgets_init', 'hitokoto_load_widget' );
 
+require get_template_directory() . '/custom-functions.php';
+
 /**
  * Implement the Custom Header feature.
  */
