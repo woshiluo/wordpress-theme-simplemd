@@ -283,7 +283,7 @@ class hitokoto_widget extends WP_Widget {
 		jQuery.get('https://hitokoto.woshiluo.com/', function (data) {
 			if (typeof data === 'string') data = JSON.parse(data);
 			let selector = jQuery( "#<?php printf( "%s", $hitokoto_id ); ?>" );
-			selector.find('.hitokoto-loading').css('display', 'none');
+			selector.find('.hitokoto-loading').css('display', 'none').removeClass('mdui-center');
 			selector = selector.find('.hitokoto');
 			selector.css('display', 'block');
 			selector.find('.hitokoto-content').css('display', '').text(data.hitokoto);
