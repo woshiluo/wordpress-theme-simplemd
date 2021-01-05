@@ -909,7 +909,6 @@ a:active {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-
 }
 
 /***
@@ -1022,7 +1021,7 @@ a:active {
 }
 
 .top-block { 
-	animation: fadeIn .75s ease;
+	animation: fadeInBottom .75s ease;
 	position: relative;
 	top: -5vh;
 	left: 0;
@@ -1031,7 +1030,7 @@ a:active {
 
 .site-branding {
 	color: #fff;
-	animation: fadeInTop .5s ease;
+	animation: fadeInBottom .5s ease;
 	font-size: 2em;
 	font-weight: unset;
 	margin-top: 10vh;
@@ -1083,4 +1082,160 @@ a:active {
 
 .hitokoto {
 	display: none;
+}
+
+
+
+@keyframes fadeIn {
+    from {
+		transform: translateX( calc( 100% - 15px ));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInBottom {
+    from {
+		transform: translateY( calc( 100% - 15px ) );
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translateX(0);
+    }
+
+	to {
+		transform: translateX( calc( 100% - 15px ));
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+		transform: rotate(180deg);
+    }
+}
+
+@keyframes rotate360 {
+    from {
+        transform: rotate(180deg);
+    }
+
+    to {
+		transform: rotate(360deg);
+    }
+}
+
+.lg-actions .lg-next::before {
+	content: "\3e"!important;
+}
+
+.lg-actions .lg-prev::after {
+	content: "\3c"!important;
+}
+
+.toc {
+	background: #1976D2;
+	transform: translateX( calc( 100% - 15px ));
+	position: fixed;
+	top: 30vh;
+	right: 0;
+	max-width: 40%;
+	padding: 10px;
+	border-radius: 2px;
+	-webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.toc-main {
+	max-height: 40vh;
+	margin-left: 17px
+}
+
+.toc-item > a{
+	color: #fff;
+	text-decoration: none;
+}
+
+.toc-item {
+	padding: 5px;
+}
+
+.toc-item:hover {
+	background: #0D47A1;
+}
+
+.toc-item{
+	transition: background-color 200ms cubic-bezier(0.4, 0.0, 0.6, 1) 0s;
+	cursor: pointer;
+}
+
+.toc-item-act {
+	border-left: 0.14em solid #fff;
+	background: #1565C0;
+}
+
+.toc-1 {
+	margin-left: 1.5em;
+}
+
+.toc-2 {
+	margin-left: 3em;
+}
+
+.toc-3 {
+	margin-left: 4.5em;
+}
+
+#toggle_toc {
+	background: #1976D2;
+	color: white;
+	padding: 0;
+	float: left;
+	position: absolute;
+	border: 0;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 15px;
+}
+
+#toggle_toc:hover {
+	background: #0D47A1;
+}
+
+#toggle_toc{
+	transition: background-color 200ms cubic-bezier(0.4, 0.0, 0.6, 1) 0s;
+}
+
+.toggle-toc-rotate {
+	animation: rotate .5s cubic-bezier(0.4, 0.0, 0.6, 1);
+	transform: rotate(180deg);
+	color:
+	#fff;
+}
+
+.toggle-toc-rotate360 {
+	animation: rotate360 .5s cubic-bezier(0.4, 0.0, 0.6, 1);
+	transform: rotate(0deg);
+}
+
+.toc-open {
+	animation: fadeIn .2s cubic-bezier(0.4, 0.0, 0.6, 1);
+	transform: translatex(0);
+}
+
+.toc-close {
+	animation: fadeOut .2s cubic-bezier(0.4, 0.0, 0.6, 1);
+	transform: translateX( calc( 100% - 15px ));
 }
