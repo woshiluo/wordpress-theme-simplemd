@@ -919,6 +919,7 @@ a:active {
 	padding: 10px;
 	border-left: solid #009688 2px;
 	background: #E0F2F1;
+	list-style: none;
 }
 
 .comment-li > p {

@@ -166,29 +166,6 @@ function simplemd_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'simplemd_scripts' );
 
-function format_comment($comment, $args, $depth) { ?>
-        <li <?php comment_class( 'comment-li' ); ?> id="comment-<?php comment_ID() ?>">
-            <div class="comment-intro">
-				<?php echo get_avatar( get_comment_author_email(), 48 ); ?>
-				<div class="comment-intro-details">
-					<div class="comment-author-link">
-						<?php echo get_comment_author_link(); ?>
-					</div>
-					<div class="comment-permalink"><?php echo get_comment_date() . ' ' . get_comment_time() ?></div>
-				</div>
-            </div>
-            
-            <?php if ($comment->comment_approved == '0') : ?>
-				<em><?php _e('Your comment is awaiting moderation.') ?></em><br />
-            <?php endif; ?>
-            
-            <?php comment_text(); ?>
-            
-            <div class="reply">
-                <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-            </div>
-		</li>
-<?php } 
 
 function simplemd_comment_form_fileds( $fileds ) {
 	$commenter     = wp_get_current_commenter();

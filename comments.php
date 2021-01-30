@@ -56,34 +56,55 @@ if ( post_password_required() ) {
 						'style'       => 'ol',
 						'format'      => 'html5',
 						'short_ping'  => true,
-						'callback'    => format_comment,
+						'callback'    => function($comment, $args, $depth) { ?>
+<li <?php comment_class( 'comment-li' ); ?> id="comment-<?php comment_ID() ?>">
+	<div class="comment-intro">
+		<?php echo get_avatar( get_comment_author_email(), 48 ); ?>
+		<div class="comment-intro-details">
+			<div class="comment-author-link">
+				<?php echo get_comment_author_link(); ?>
+			</div>
+			<div class="comment-permalink"><?php echo get_comment_date() . ' ' . get_comment_time() ?></div>
+		</div>
+	</div>
+
+	<?php if ($comment->comment_approved == '0') : ?>
+		<em><?php _e('Your comment is awaiting moderation.') ?></em><br />
+	<?php endif; ?>
+
+	<?php comment_text(); ?>
+
+	<div class="reply">
+		<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+	</div>
+</li> <?php } 
 					)
 				);
-				?>
+?>
 			</div><!-- .comment-list -->
-	
-			<?php
-			the_comments_navigation();
-	
-			// If comments are closed and there are comments, let's leave a little note, shall we?
-			if ( ! comments_open() ) :
-				?>
+
+<?php
+				the_comments_navigation();
+
+				// If comments are closed and there are comments, let's leave a little note, shall we?
+				if ( ! comments_open() ) :
+?>
 				<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'simplemd' ); ?></p>
-				<?php
-			endif;
-	
-		endif; // Check for have_comments().
-	
-			comment_form( array( 
-				"comment_field" => '
+<?php
+					endif;
+
+				endif; // Check for have_comments().
+
+				comment_form( array( 
+					"comment_field" => '
 					<div class="mdui-textfield mdui-textfield-floating-label">
-						<i class="mdui-icon material-icons">message</i>
-						<label class="mdui-textfield-label">Comment</label>
-						<textarea id="comment" name="comment" class="mdui-textfield-input"></textarea>
+					<i class="mdui-icon material-icons">message</i>
+					<label class="mdui-textfield-label">Comment</label>
+					<textarea id="comment" name="comment" class="mdui-textfield-input"></textarea>
 					</div>',
-				"submit_button" => '<input name="%1$s" type="submit" id="%2$s" class="%3$s mdui-btn mdui-btn-block mdui-ripple" value="%4$s" />'
-			 ) );
-		?>
-	
+					"submit_button" => '<input name="%1$s" type="submit" id="%2$s" class="%3$s mdui-btn mdui-btn-block mdui-ripple" value="%4$s" />'
+				) );
+?>
+
 	</div><!-- #comments -->
 </div>
