@@ -326,6 +326,9 @@ function add_header_meta( $post ) {
 	?>
 		<meta name="keywords" content="<?php echo $keywords; ?>" />
 		<meta name="description" content="<?php echo $description; ?> "/ >
+		<meta name="og:url" content="<?php echo home_url(add_query_arg(array())); ?>" />
+		<meta name="og:keywords" content="<?php echo $keywords; ?>" />
+		<meta name="og:description" content="<?php echo $description; ?> "/ >
 <?php
 }
 
