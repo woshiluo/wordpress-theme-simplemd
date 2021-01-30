@@ -323,10 +323,13 @@ function add_header_meta( $post ) {
 	} else if ( is_category()) {
 		$description = category_description();
 	}
+	$description = str_replace( '"', '\"', $description );
+	$description = str_replace( "\n", '', $description );
 	?>
 		<meta name="keywords" content="<?php echo $keywords; ?>" />
 		<meta name="description" content="<?php echo $description; ?> "/ >
 		<meta name="og:url" content="<?php echo home_url(add_query_arg(array())); ?>" />
+		<meta name="og:title" content="<?php echo get_the_title(); ?>" />
 		<meta name="og:keywords" content="<?php echo $keywords; ?>" />
 		<meta name="og:description" content="<?php echo $description; ?> "/ >
 <?php
