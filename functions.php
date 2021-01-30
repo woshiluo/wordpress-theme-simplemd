@@ -302,6 +302,32 @@ class hitokoto_widget extends WP_Widget {
 	}
 } 
 
+function add_header_meta( $post ) {
+	if ( is_home ()) {
+		$description = get_bloginfo('description');
+		$keywords = "";
+	}
+	else if ( is_single ()) {
+		if ( $post->post_excerpt)
+		{
+			$description = $post->post_excerpt;
+		} else {
+			$description = mb_strimwidth(strip_tags(apply_filters('the_content',$post->post_content)),0,512);
+		}
+
+		$keywords = "";
+		$tags = wp_get_post_tags($post->ID);
+		foreach ($tags as $tag ) {
+			$keywords = $keywords.$tag->name.","; 
+		}
+	} else if ( is_category()) {
+		$description = category_description();
+	}
+	?>
+		<meta name="keywords" content="<?php echo $keywords; ?>" />
+		<meta name="description" content="<?php echo $description; ?> "/ >
+<?php
+}
 
 // Register and load the widget
 function hitokoto_load_widget() {
