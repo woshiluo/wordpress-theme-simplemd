@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.2' );
+	define( '_S_VERSION', '1.0.4' );
 }
 
 if ( ! function_exists( 'simplemd_setup' ) ) :
@@ -305,6 +305,7 @@ class hitokoto_widget extends WP_Widget {
 function add_header_meta( $post ) {
 	if ( is_home ()) {
 		$description = get_bloginfo('description');
+		$title = get_bloginfo('name');
 		$keywords = "";
 	}
 	else if ( is_single ()) {
@@ -320,6 +321,7 @@ function add_header_meta( $post ) {
 		foreach ($tags as $tag ) {
 			$keywords = $keywords.$tag->name.","; 
 		}
+		$title = get_the_title();
 	} else if ( is_category()) {
 		$description = category_description();
 	}
@@ -329,7 +331,7 @@ function add_header_meta( $post ) {
 		<meta name="keywords" content="<?php echo $keywords; ?>" />
 		<meta name="description" content="<?php echo $description; ?> "/ >
 		<meta name="og:url" content="<?php echo home_url(add_query_arg(array())); ?>" />
-		<meta name="og:title" content="<?php echo get_the_title(); ?>" />
+		<meta name="og:title" content="<?php echo $title; ?>" />
 		<meta name="og:keywords" content="<?php echo $keywords; ?>" />
 		<meta name="og:description" content="<?php echo $description; ?> "/ >
 <?php

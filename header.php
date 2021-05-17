@@ -24,8 +24,6 @@
 <body <?php body_class( 'mdui-theme-accent-blue mdui-theme-primary-teal' ); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'simplemd' ); ?></a>
-
 	<header id="masthead" class="site-header header mdui-shadow-4">
 		<div class="site-branding">
 			<?php
