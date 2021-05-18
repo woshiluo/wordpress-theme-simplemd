@@ -4,7 +4,7 @@ Theme URI: https://github.com/woshiluo/wordpress-theme-simplemd
 Author: Woshiluo
 Author URI: https://blog.woshiluo.com/
 Description: Description
-Version: 1.0.4-3
+Version: 1.0.4-2
 Tested up to: 8.0
 Requires PHP: 5.6
 License: GNU General Public License v3 or later
@@ -40,6 +40,9 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 	display: block!important;
 	margin-left: auto!important;
 	margin-right: auto!important;
+}
+figcaption {
+	width: 100%;
 }
 
 /***
