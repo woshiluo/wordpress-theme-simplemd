@@ -45,6 +45,10 @@ figcaption {
 	width: 100%;
 }
 
+time[class=[class="updated"]] {
+	display: none;
+}
+
 /***
  * Main Block
  */
@@ -160,6 +164,10 @@ body {
 
 .nav-previous, .nav-previous > a, .nav-previous > a > span, .nav-next, .nav-next > a, .nav-next > a > span {
 	max-width: 100%;
+}
+
+.nav-next {
+	margin-left: auto;
 }
 
 .navigation.posts-navigation {
