@@ -135,7 +135,7 @@ add_action( 'widgets_init', 'simplemd_widgets_init' );
  */
 function simplemd_scripts() {
 	wp_enqueue_style( 'simplemd-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_enqueue_style( 'mdui', get_template_directory_uri() . '/libs/mdui-v1.0.0/css/mdui.min.css', array(), _S_VERSION, false );
+	wp_enqueue_style( 'mdui', get_template_directory_uri() . '/libs/mdui/dist/css/mdui.min.css', array(), _S_VERSION, false );
 	wp_enqueue_style( 'prism', "https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css" );
 	wp_enqueue_style( 'prism-line', "https://cdn.jsdelivr.net/npm/prismjs@1.17.1/plugins/line-numbers/prism-line-numbers.min.css" );
 	wp_enqueue_style( 'lightgallery', "https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css" );
@@ -143,7 +143,7 @@ function simplemd_scripts() {
 
 	// wp_style_add_data( 'simplemd-style', 'rtl', 'replace' );
 	wp_enqueue_script("jquery");
-	wp_enqueue_script( 'mdui', get_template_directory_uri() . '/libs/mdui-v1.0.0/js/mdui.min.js', array(), _S_VERSION, false );
+	wp_enqueue_script( 'mdui', get_template_directory_uri() . '/libs/mdui/dist/js/mdui.min.js', array(), _S_VERSION, false );
 
 	wp_enqueue_script( 'mathjax-config', get_template_directory_uri() . '/js/mathjax.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'highlight-config', get_template_directory_uri() . '/js/highlight.js', array( 'jquery' ), _S_VERSION, true );

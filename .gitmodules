@@ -1,0 +1,3 @@
+[submodule "libs/mdui"]
+	path = libs/mdui
+	url = https://github.com/zdhxiong/mdui
