@@ -136,9 +136,9 @@ add_action( 'widgets_init', 'simplemd_widgets_init' );
 function simplemd_scripts() {
 	wp_enqueue_style( 'simplemd-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_enqueue_style( 'mdui', get_template_directory_uri() . '/libs/mdui/dist/css/mdui.min.css', array(), _S_VERSION, false );
-	wp_enqueue_style( 'prism', "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/themes/prism.min.css" );
-	wp_enqueue_style( 'prism-line', "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs@1.17.1/plugins/line-numbers/prism-line-numbers.min.css" );
-	wp_enqueue_style( 'lightgallery', "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css" );
+	wp_enqueue_style( 'prism', get_template_directory_uri() . '/libs/prism/themes/prism.css' );
+	wp_enqueue_style( 'prism-line', get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.min.css' );
+	wp_enqueue_style( 'lightgallery', "https://unpkg.com/lightgallery@1.6.12/dist/css/lightgallery.min.css" );
 
 
 	// wp_style_add_data( 'simplemd-style', 'rtl', 'replace' );
@@ -151,13 +151,13 @@ function simplemd_scripts() {
 	if( is_single() )
 		wp_enqueue_script( 'toc', get_template_directory_uri() . '/js/toc.js', array( 'jquery' ), _S_VERSION, true );
 
-	wp_enqueue_script( 'mathjax',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/mathjax@3/es5/tex-svg.js", array( 'mathjax-config' ) );
-	wp_enqueue_script( 'prism',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/prism.min.js" );
-	wp_enqueue_script( 'prism-core',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/components/prism-core.min.js" );
-	wp_enqueue_script( 'prism-line',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js" );
-	wp_enqueue_script( 'prism-autoloader',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js" );
-	wp_enqueue_script( 'lightgallery',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/lightgallery@1.6.12/dist/js/lightgallery-all.min.js" );
-	wp_enqueue_script( 'nicescrool',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/jquery.nicescroll@3.7.6/jquery.nicescroll.min.js" );
+	wp_enqueue_script( 'mathjax',  "https://unpkg.com/mathjax@3/es5/tex-svg.js", array( 'mathjax-config' ) );
+	wp_enqueue_script( 'prism',  get_template_directory_uri() . '/libs/prism/plugins/prism.min.js' );
+	wp_enqueue_script( 'prism-core',  get_template_directory_uri() . '/libs/prism/plugins/components/prism-core.min.js' );
+	wp_enqueue_script( 'prism-line',  get_template_directory_uri() . '/libs/prism/plugins/plugins/line-numbers/prism-line-numbers.min.js' );
+	wp_enqueue_script( 'prism-autoloader',  get_template_directory_uri() . '/libs/prism/plugins/plugins/autoloader/prism-autoloader.min.js' );
+	wp_enqueue_script( 'lightgallery',  "https://unpkg.com/lightgallery@1.6.12/dist/js/lightgallery-all.js" );
+	wp_enqueue_script( 'nicescrool',  "https://unpkg.com/jquery.nicescroll@3.7.6/jquery.nicescroll.js" );
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -206,25 +206,25 @@ function simplemd_comment_form_fileds( $fileds ) {
 add_filter('comment_form_default_fields','simplemd_comment_form_fileds');
 
 
-function simplemd_pagenavi() {  
-	global $wp_query,$wp_rewrite;  
-	$wp_query->query_vars['paged'] > 1 ?$current=$wp_query->query_vars['paged'] :$current= 1;  
-	$pagination=array(  
-		'base'=> @add_query_arg('paged','%#%'),  
-		'format'=>'',  
-		'total'=>$wp_query->max_num_pages,  
-		'current'=>$current,  
-		'show_all'=> false,  
-		'type'=>'plain',  
+function simplemd_pagenavi() {
+	global $wp_query,$wp_rewrite;
+	$wp_query->query_vars['paged'] > 1 ?$current=$wp_query->query_vars['paged'] :$current= 1;
+	$pagination=array(
+		'base'=> @add_query_arg('paged','%#%'),
+		'format'=>'',
+		'total'=>$wp_query->max_num_pages,
+		'current'=>$current,
+		'show_all'=> false,
+		'type'=>'plain',
 		'end_size'=>'2',
 		'mid_size'=>'1',
-		'prev_text'=>'<i class="mdui-icon material-icons">chevron_left</i>',  
-		'next_text'=>'<i class="mdui-icon material-icons">chevron_right</i>'  
-	);  
-	if( $wp_rewrite -> using_permalinks() )  
-		$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg('s',get_pagenum_link(1) ) ) .'page/%#%/','paged');  
-	if( !empty($wp_query->query_vars['s']) )  
-		$pagination['add_args'] =array('s'=>get_query_var('s'));  
+		'prev_text'=>'<i class="mdui-icon material-icons">chevron_left</i>',
+		'next_text'=>'<i class="mdui-icon material-icons">chevron_right</i>'
+	);
+	if( $wp_rewrite -> using_permalinks() )
+		$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg('s',get_pagenum_link(1) ) ) .'page/%#%/','paged');
+	if( !empty($wp_query->query_vars['s']) )
+		$pagination['add_args'] =array('s'=>get_query_var('s'));
 	$output = '<div class="navigation posts-navigation mdui-btn-group">' . paginate_links($pagination) . '</div>';
 	$output = str_replace( '<span class="page-numbers dots">', '<span class="page-numbers dots mdui-btn mdui-btn-dense mdui-ripple" disabled>', $output );
 	$output = str_replace( 'aria-current="page"', 'aria-current="page" disabled', $output );
@@ -233,15 +233,15 @@ function simplemd_pagenavi() {
 	$output = str_replace( '"page-numbers current"', '"page-numbers current mdui-btn mdui-btn-dense mdui-ripple"', $output );
 	$output = str_replace( '"page-numbers"', '"page-numbers mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple"', $output );
 	echo $output;
-}  
+}
 
-// Creating the widget 
+// Creating the widget
 class hitokoto_widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
-			'hitokoto_widget', 
-			__('Hitokoto Widget', 'hitokoto_widget_domain'), 
-			array( 'description' => __( 'Hitokoto', 'hitokoto_widget_domain' ), ) 
+			'hitokoto_widget',
+			__('Hitokoto Widget', 'hitokoto_widget_domain'),
+			array( 'description' => __( 'Hitokoto', 'hitokoto_widget_domain' ), )
 		);
 	}
 
@@ -261,7 +261,7 @@ class hitokoto_widget extends WP_Widget {
 			<footer class="hitokoto-from"></footer>
 		</blockquote>
 	</div>
-	<script> 
+	<script>
 		jQuery.get('https://hitokoto.woshiluo.com/0/0', function (data) {
 			if (typeof data === 'string') data = JSON.parse(data);
 			let selector = jQuery( "#<?php printf( "%s", $hitokoto_id ); ?>" );
@@ -289,10 +289,10 @@ class hitokoto_widget extends WP_Widget {
 		}
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
-		<?php 
+		<?php
 	}
 
 	public function update( $new_instance, $old_instance ) {
@@ -300,7 +300,7 @@ class hitokoto_widget extends WP_Widget {
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		return $instance;
 	}
-} 
+}
 
 function add_header_meta( $post ) {
 	if ( is_home ()) {
@@ -319,7 +319,7 @@ function add_header_meta( $post ) {
 		$keywords = "";
 		$tags = wp_get_post_tags($post->ID);
 		foreach ($tags as $tag ) {
-			$keywords = $keywords.$tag->name.","; 
+			$keywords = $keywords.$tag->name.",";
 		}
 		$title = get_the_title();
 	} else if ( is_category()) {

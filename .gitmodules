@@ -1,3 +1,6 @@
 [submodule "libs/mdui"]
 	path = libs/mdui
 	url = https://github.com/zdhxiong/mdui
+[submodule "libs/prism"]
+	path = libs/prism
+	url = https://github.com/PrismJS/prism
