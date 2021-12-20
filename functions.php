@@ -137,7 +137,7 @@ function simplemd_scripts() {
 	wp_enqueue_style( 'simplemd-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_enqueue_style( 'mdui', get_template_directory_uri() . '/libs/mdui/dist/css/mdui.min.css', array(), _S_VERSION, false );
 	wp_enqueue_style( 'prism', get_template_directory_uri() . '/libs/prism/themes/prism.css' );
-	wp_enqueue_style( 'prism-line', get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.min.css' );
+	wp_enqueue_style( 'prism-line', get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.css' );
 	wp_enqueue_style( 'lightgallery', "https://unpkg.com/lightgallery@1.6.12/dist/css/lightgallery.min.css" );
 
 
