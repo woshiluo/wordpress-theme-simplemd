@@ -30,7 +30,7 @@
 
 <?php wp_footer(); ?>
 
-<script>Prism.plugins.autoloader.languages_path = '<?php echo get_template_directory_uri() . '/libs/prism/plugins/'; ?>components/'</script>
+<script>Prism.plugins.autoloader.languages_path = '<?php echo get_template_directory_uri() . '/libs/prism/'; ?>components/'</script>
 
 
 </body>
