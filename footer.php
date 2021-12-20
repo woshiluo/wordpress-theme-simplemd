@@ -30,7 +30,7 @@
 
 <?php wp_footer(); ?>
 
-<script>Prism.plugins.autoloader.languages_path = 'https://cdn.jsdelivr.net/npm/prismjs/components/'</script>
+<script>Prism.plugins.autoloader.languages_path = 'https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/components/'</script>
 
 
 </body>

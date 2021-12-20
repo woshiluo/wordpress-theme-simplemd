@@ -136,9 +136,9 @@ add_action( 'widgets_init', 'simplemd_widgets_init' );
 function simplemd_scripts() {
 	wp_enqueue_style( 'simplemd-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_enqueue_style( 'mdui', get_template_directory_uri() . '/libs/mdui/dist/css/mdui.min.css', array(), _S_VERSION, false );
-	wp_enqueue_style( 'prism', "https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css" );
-	wp_enqueue_style( 'prism-line', "https://cdn.jsdelivr.net/npm/prismjs@1.17.1/plugins/line-numbers/prism-line-numbers.min.css" );
-	wp_enqueue_style( 'lightgallery', "https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css" );
+	wp_enqueue_style( 'prism', "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/themes/prism.min.css" );
+	wp_enqueue_style( 'prism-line', "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs@1.17.1/plugins/line-numbers/prism-line-numbers.min.css" );
+	wp_enqueue_style( 'lightgallery', "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css" );
 
 
 	// wp_style_add_data( 'simplemd-style', 'rtl', 'replace' );
@@ -151,13 +151,13 @@ function simplemd_scripts() {
 	if( is_single() )
 		wp_enqueue_script( 'toc', get_template_directory_uri() . '/js/toc.js', array( 'jquery' ), _S_VERSION, true );
 
-	wp_enqueue_script( 'mathjax',  "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js", array( 'mathjax-config' ) );
-	wp_enqueue_script( 'prism',  "https://cdn.jsdelivr.net/npm/prismjs/prism.min.js" );
-	wp_enqueue_script( 'prism-core',  "https://cdn.jsdelivr.net/npm/prismjs/components/prism-core.min.js" );
-	wp_enqueue_script( 'prism-line',  "https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js" );
-	wp_enqueue_script( 'prism-autoloader',  "https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js" );
-	wp_enqueue_script( 'lightgallery',  "https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/js/lightgallery-all.min.js" );
-	wp_enqueue_script( 'nicescrool',  "https://cdn.jsdelivr.net/npm/jquery.nicescroll@3.7.6/jquery.nicescroll.min.js" );
+	wp_enqueue_script( 'mathjax',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/mathjax@3/es5/tex-svg.js", array( 'mathjax-config' ) );
+	wp_enqueue_script( 'prism',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/prism.min.js" );
+	wp_enqueue_script( 'prism-core',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/components/prism-core.min.js" );
+	wp_enqueue_script( 'prism-line',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js" );
+	wp_enqueue_script( 'prism-autoloader',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js" );
+	wp_enqueue_script( 'lightgallery',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/lightgallery@1.6.12/dist/js/lightgallery-all.min.js" );
+	wp_enqueue_script( 'nicescrool',  "https://cdn.jsdelivr.net.cdn.cloudflare.net/npm/jquery.nicescroll@3.7.6/jquery.nicescroll.min.js" );
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
