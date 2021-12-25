@@ -1,4 +1,3 @@
-Prism.plugins.autoloader.languages_path = 'get_template_directory_uri() . '/libs/prism/plugins/components/'
 // Add Highlight
 jQuery("pre:not([class*='language'])").addClass('language-cpp').addClass('line-numbers');
 
