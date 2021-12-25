@@ -138,7 +138,7 @@ function simplemd_scripts() {
 	wp_enqueue_style( 'mdui', get_template_directory_uri() . '/libs/mdui/dist/css/mdui.min.css', array(), _S_VERSION, false );
 	wp_enqueue_style( 'prism', get_template_directory_uri() . '/libs/prism/themes/prism.css' );
 	wp_enqueue_style( 'prism-line', get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.css' );
-	wp_enqueue_style( 'lightgallery', "https://unpkg.com/lightgallery@1.6.12/dist/css/lightgallery.min.css" );
+	wp_enqueue_style( 'lightgallery', get_template_directory_uri() . "/libs/lightgallery/dist/css/lightgallery.min.css" );
 
 
 	// wp_style_add_data( 'simplemd-style', 'rtl', 'replace' );
@@ -156,7 +156,7 @@ function simplemd_scripts() {
 	wp_enqueue_script( 'prism-core',  get_template_directory_uri() . '/libs/prism/components/prism-core.min.js' );
 	wp_enqueue_script( 'prism-line',  get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.min.js' );
 	wp_enqueue_script( 'prism-autoloader',  get_template_directory_uri() . '/libs/prism/plugins/autoloader/prism-autoloader.min.js' );
-	wp_enqueue_script( 'lightgallery',  "https://unpkg.com/lightgallery@1.6.12/dist/js/lightgallery-all.js" );
+	wp_enqueue_script( 'lightgallery',   get_template_directory_uri() . "/libs/lightgallery/dist/js/lightgallery-all.js" );
 	wp_enqueue_script( 'nicescrool',  "https://unpkg.com/jquery.nicescroll@3.7.6/jquery.nicescroll.js" );
 
 

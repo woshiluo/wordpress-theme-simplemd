@@ -7,3 +7,6 @@
 [submodule "libs/mathjax"]
 	path = libs/mathjax
 	url = https://github.com/mathjax/MathJax
+[submodule "libs/lightgallery"]
+	path = libs/lightgallery
+	url = https://github.com/sachinchoolur/lightGallery
