@@ -151,7 +151,7 @@ function simplemd_scripts() {
 	if( is_single() )
 		wp_enqueue_script( 'toc', get_template_directory_uri() . '/js/toc.js', array( 'jquery' ), _S_VERSION, true );
 
-	wp_enqueue_script( 'mathjax',  "https://unpkg.com/mathjax@3/es5/tex-svg.js", array( 'mathjax-config' ) );
+	wp_enqueue_script( 'mathjax',  get_template_directory_uri() . "/libs/mathjax/es5/tex-svg.js", array( 'mathjax-config' ) );
 	wp_enqueue_script( 'prism',  get_template_directory_uri() . '/libs/prism/prism.js' );
 	wp_enqueue_script( 'prism-core',  get_template_directory_uri() . '/libs/prism/components/prism-core.min.js' );
 	wp_enqueue_script( 'prism-line',  get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.min.js' );

@@ -4,3 +4,6 @@
 [submodule "libs/prism"]
 	path = libs/prism
 	url = https://github.com/PrismJS/prism
+[submodule "libs/mathjax"]
+	path = libs/mathjax
+	url = https://github.com/mathjax/MathJax
