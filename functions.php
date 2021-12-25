@@ -157,7 +157,7 @@ function simplemd_scripts() {
 	wp_enqueue_script( 'prism-line',  get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.min.js' );
 	wp_enqueue_script( 'prism-autoloader',  get_template_directory_uri() . '/libs/prism/plugins/autoloader/prism-autoloader.min.js' );
 	wp_enqueue_script( 'lightgallery',   get_template_directory_uri() . "/libs/lightgallery/dist/js/lightgallery-all.js" );
-	wp_enqueue_script( 'nicescrool',  "https://unpkg.com/jquery.nicescroll@3.7.6/jquery.nicescroll.js" );
+	wp_enqueue_script( 'nicescroll',  get_template_directory_uri() . "/libs/nicescroll/dist/jquery.nicescroll.js" );
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
