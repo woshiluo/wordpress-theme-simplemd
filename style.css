@@ -27,6 +27,9 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 .content-card {
 	margin-bottom: 15px;
 }
+.entry-title {
+	margin-top: 3px !important;
+}
 
 .content-categories-list,.content-tags-list {
 	padding: 5px;
