@@ -50,7 +50,7 @@ figure > img {
 	height: auto !important;
 }
 figcaption {
-	width: 100%;
+	/* width: 100%; */
 }
 
 time[class="updated"] {
