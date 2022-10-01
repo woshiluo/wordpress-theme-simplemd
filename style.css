@@ -4,7 +4,7 @@ Theme URI: https://github.com/woshiluo/wordpress-theme-simplemd
 Author: Woshiluo
 Author URI: https://blog.woshiluo.com/
 Description: Description
-Version: 1.0.4-5
+Version: 1.0.6
 Tested up to: 8.0
 Requires PHP: 5.6
 License: GNU AFFERO GENERAL PUBLIC LICENSE v3 
@@ -203,7 +203,7 @@ body {
 }
 
 .top-block {
-	animation: fadeInBottom .75s ease;
+	/* animation: fadeInBottom .75s ease; */
 	position: relative;
 	top: -5vh;
 	left: 0;
