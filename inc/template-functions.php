@@ -35,3 +35,11 @@ function simplemd_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'simplemd_pingback_header' );
+
+/***
+ * Add all screen set to scrset
+ */
+function remove_max_srcset_image_width( $max_width ) {
+	    return false;
+}
+add_filter( 'max_srcset_image_width', 'remove_max_srcset_image_width' );

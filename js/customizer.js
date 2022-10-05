@@ -14,7 +14,7 @@ jQuery(document).ready( function(){
 		jQuery(this).css('cursor', 'pointer');
 		let element = jQuery(this).siblings("figcaption");
 		let img_alt = jQuery(element).text();
-		lightgallery_list.push({ "src": this.src, "thumb": this.src, "subHtml": img_alt + "<br/>By Woshiluo"});
+		lightgallery_list.push({ "src": this.srcset.split(' ').reverse()[1], "thumb": this.src, "subHtml": img_alt + "<br/>By Woshiluo"});
 	});
 
 	images = jQuery(".entry-content img");
