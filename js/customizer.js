@@ -7,6 +7,16 @@
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
 
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('/wp-content/themes/wordpress-theme-simplemd/js/sw.js', {scope: '/'}).then(function(reg) {
+		// registration worked
+		console.log('Registration succeeded. Scope is ' + reg.scope);
+	}).catch(function(error) {
+		// registration failed
+		console.log('Registration failed with ' + error);
+	});
+}
+
 jQuery(document).ready( function(){
 	// Light Gallery
 	let lightgallery_list = Array(), images = Array();
