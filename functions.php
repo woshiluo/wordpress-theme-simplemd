@@ -153,6 +153,7 @@ function simplemd_scripts() {
 		wp_enqueue_script( 'toc', get_template_directory_uri() . '/js/toc.js', array( 'jquery' ), _S_VERSION, true );
 
 	wp_enqueue_script( 'katex', get_template_directory_uri() . '/libs/katex-0.16.3/katex.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'katex-render', get_template_directory_uri() . '/libs/katex-0.16.3/contrib/auto-render.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'prism',  get_template_directory_uri() . '/libs/prism/prism.js', array(),  _S_VERSION, true );
 	wp_enqueue_script( 'prism-core',  get_template_directory_uri() . '/libs/prism/components/prism-core.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'prism-line',  get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.min.js', array(), _S_VERSION, true );
@@ -170,6 +171,8 @@ add_action( 'wp_enqueue_scripts', 'simplemd_scripts' );
 
 // Why wp_enqueue_script does not support defer and async?
 add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+	if( $handle == "jquery-core" || $handle == "jquery-migrate" ) 
+		return $tag;
 	return str_replace( ' src', ' defer src', $tag );
 }, 10, 2 );
 
@@ -268,7 +271,7 @@ class hitokoto_widget extends WP_Widget {
 			<footer class="hitokoto-from"></footer>
 		</blockquote>
 	</div>
-	<script>
+	<script async defer>
 		jQuery.get('https://hitokoto.woshiluo.com/0/0', function (data) {
 			if (typeof data === 'string') data = JSON.parse(data);
 			let selector = jQuery( "#<?php printf( "%s", $hitokoto_id ); ?>" );

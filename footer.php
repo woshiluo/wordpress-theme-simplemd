@@ -30,7 +30,31 @@
 
 <?php wp_footer(); ?>
 
-<script>Prism.plugins.autoloader.languages_path = '<?php echo get_template_directory_uri() . '/libs/prism/'; ?>components/'</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	Prism.plugins.autoloader.languages_path = '<?php echo get_template_directory_uri() . '/libs/prism/'; ?>components/'
+
+	const $ = mdui.$;
+	$('.entry-content > p').each( ( idx, elem ) => { 
+		const text = elem.textContent; 
+		if( text[0] === text[1] && text[0] === '$' ) {
+			$(elem).find('br').replaceWith('');
+		}
+	});
+	renderMathInElement(document.body, {
+		delimiters: [
+			{left: "$$", right: "$$", display: true},
+			{left: "$", right: "$", display: false}
+		],
+		macros: {
+			"\\ge": "\\geqslant",
+			"\\le": "\\leqslant",
+			"\\geq": "\\geqslant",
+			"\\leq": "\\leqslant"
+		 }
+	 }); 
+});
+</script>
 
 
 </body>
