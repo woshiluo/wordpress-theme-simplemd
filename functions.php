@@ -171,7 +171,7 @@ add_action( 'wp_enqueue_scripts', 'simplemd_scripts' );
 
 // Why wp_enqueue_script does not support defer and async?
 add_filter( 'script_loader_tag', function ( $tag, $handle ) {
-	if( $handle == "jquery-core" || $handle == "jquery-migrate" ) 
+	if( is_admin() || $handle == "jquery-core" || $handle == "jquery-migrate" ) 
 		return $tag;
 	return str_replace( ' src', ' defer src', $tag );
 }, 10, 2 );
