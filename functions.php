@@ -136,28 +136,29 @@ add_action( 'widgets_init', 'simplemd_widgets_init' );
 function simplemd_scripts() {
 	wp_enqueue_style( 'simplemd-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_enqueue_style( 'mdui', get_template_directory_uri() . '/libs/mdui/dist/css/mdui.min.css', array(), _S_VERSION, false );
-	wp_enqueue_style( 'prism', get_template_directory_uri() . '/libs/prism/themes/prism.css' );
-	wp_enqueue_style( 'prism-line', get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.css' );
-	wp_enqueue_style( 'lightgallery', get_template_directory_uri() . "/libs/lightgallery/dist/css/lightgallery.min.css" );
+	wp_enqueue_style( 'katex', get_template_directory_uri() . '/libs/katex-0.16.3/katex.min.css', array(), _S_VERSION, false );
+	wp_enqueue_style( 'prism', get_template_directory_uri() . '/libs/prism/themes/prism.css', array(), _S_VERSION );
+	wp_enqueue_style( 'prism-line', get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.css', array(), _S_VERSION );
+	wp_enqueue_style( 'lightgallery', get_template_directory_uri() . "/libs/lightgallery/dist/css/lightgallery.min.css", array(), _S_VERSION );
 
 
 	// wp_style_add_data( 'simplemd-style', 'rtl', 'replace' );
 	wp_enqueue_script( "jquery" );
 	wp_enqueue_script( 'mdui', get_template_directory_uri() . '/libs/mdui/dist/js/mdui.min.js', array(), _S_VERSION, false );
 
-	wp_enqueue_script( 'mathjax-config', get_template_directory_uri() . '/js/mathjax.js', array(), _S_VERSION, true );
+	// wp_enqueue_script( 'mathjax-config', get_template_directory_uri() . '/js/mathjax.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'highlight-config', get_template_directory_uri() . '/js/highlight.js', array( 'jquery' ), _S_VERSION, true );
 	wp_enqueue_script( 'customizer', get_template_directory_uri() . '/js/customizer.js', array( 'jquery' ), _S_VERSION, true );
 	if( is_single() )
 		wp_enqueue_script( 'toc', get_template_directory_uri() . '/js/toc.js', array( 'jquery' ), _S_VERSION, true );
 
-	wp_enqueue_script( 'mathjax',  get_template_directory_uri() . "/libs/mathjax/es5/tex-svg.js", array( 'mathjax-config' ) );
-	wp_enqueue_script( 'prism',  get_template_directory_uri() . '/libs/prism/prism.js', _S_VERSION, true );
-	wp_enqueue_script( 'prism-core',  get_template_directory_uri() . '/libs/prism/components/prism-core.min.js', _S_VERSION, true );
-	wp_enqueue_script( 'prism-line',  get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.min.js', _S_VERSION, true );
-	wp_enqueue_script( 'prism-autoloader',  get_template_directory_uri() . '/libs/prism/plugins/autoloader/prism-autoloader.min.js', _S_VERSION, true );
-	wp_enqueue_script( 'lightgallery',   get_template_directory_uri() . "/libs/lightgallery/dist/js/lightgallery-all.js", _S_VERSION, true );
-	wp_enqueue_script( 'nicescroll',  get_template_directory_uri() . "/libs/nicescroll/dist/jquery.nicescroll.js", _S_VERSION, true );
+	wp_enqueue_script( 'katex', get_template_directory_uri() . '/libs/katex-0.16.3/katex.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'prism',  get_template_directory_uri() . '/libs/prism/prism.js', array(),  _S_VERSION, true );
+	wp_enqueue_script( 'prism-core',  get_template_directory_uri() . '/libs/prism/components/prism-core.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'prism-line',  get_template_directory_uri() . '/libs/prism/plugins/line-numbers/prism-line-numbers.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'prism-autoloader',  get_template_directory_uri() . '/libs/prism/plugins/autoloader/prism-autoloader.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'lightgallery',   get_template_directory_uri() . "/libs/lightgallery/dist/js/lightgallery-all.js", array(), _S_VERSION, true );
+	wp_enqueue_script( 'nicescroll',  get_template_directory_uri() . "/libs/nicescroll/dist/jquery.nicescroll.js", array(), _S_VERSION, true );
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -165,6 +166,12 @@ function simplemd_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'simplemd_scripts' );
+
+
+// Why wp_enqueue_script does not support defer and async?
+add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+	return str_replace( ' src', ' defer src', $tag );
+}, 10, 2 );
 
 
 function simplemd_comment_form_fileds( $fileds ) {
